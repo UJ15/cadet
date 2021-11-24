@@ -6,13 +6,12 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:17:26 by jayu              #+#    #+#             */
-/*   Updated: 2021/11/23 19:05:49 by jayu             ###   ########.fr       */
+/*   Updated: 2021/11/24 19:36:56 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 static int	my_size(long n)
 {

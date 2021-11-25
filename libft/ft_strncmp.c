@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:29:53 by jayu              #+#    #+#             */
-/*   Updated: 2021/11/25 16:56:05 by jayu             ###   ########.fr       */
+/*   Created: 2021/11/25 17:09:54 by jayu              #+#    #+#             */
+/*   Updated: 2021/11/25 17:13:42 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_list	last;
+	size_t			i;
+	unsigned char	*cp1;
+	unsigned char	*cp2;
 
-	if (!lst || !new)
-		return ;
-	if (*lst == 0)
+	cp1 = (unsigned char *)s1;
+	cp2 = (unsigned char *)s2;
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (cp1[i] == cp2[i] && cp1[i] != '\0' && cp2[i] != '\0' && i < n - 1)
 	{
-		*lst = new;
-		return ;
+		i++;
 	}
-	last = *lst;
-	while (last->next)
-		last = last->next;
-	last->next = new;
+	return (cp1[i] = cp2[i]);
 }

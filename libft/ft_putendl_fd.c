@@ -27,7 +27,7 @@ static int	my_isascii(char c)
 	return (0);
 }
 
-void	ft_putstr_fd(char *s, int fd)
+static void	my_putstr_fd(char *s, int fd)
 {
 	int	i;
 
@@ -47,6 +47,6 @@ void	ft_putendl_fd(char *s, int fd)
 {
 	if (fd < 0)
 		return ;
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+	my_putstr_fd(s, fd);
+	my_putchar_fd('\n', fd);
 }

@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:22:42 by jayu              #+#    #+#             */
-/*   Updated: 2021/11/23 15:53:14 by jayu             ###   ########.fr       */
+/*   Updated: 2021/11/25 17:22:53 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static size_t	my_strlcpy(char *dst, const char *src, size_t dstsize)
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*cp;
-	int		size;
+	char				*cp;
+	unsigned int		size;
 
 	if (!s)
 		return (0);

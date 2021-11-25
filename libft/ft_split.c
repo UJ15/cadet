@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:53:54 by jayu              #+#    #+#             */
-/*   Updated: 2021/11/23 18:16:51 by jayu             ###   ########.fr       */
+/*   Updated: 2021/11/25 17:23:37 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,9 @@ static size_t	my_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t	srclen;
 	size_t	i;
 
+	i = 0;
 	while (src[i])
-	{
 		i++;
-	}
 	srclen = i;
 	if (srclen + 1 < dstsize)
 		my_memcpy(dst, src, srclen + 1);

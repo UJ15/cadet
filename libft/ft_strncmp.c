@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 17:09:54 by jayu              #+#    #+#             */
-/*   Updated: 2021/11/25 17:13:42 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/02 20:07:55 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	{
 		i++;
 	}
-	return (cp1[i] = cp2[i]);
+	return (cp1[i] - cp2[i]);
 }

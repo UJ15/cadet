@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:51:46 by jayu              #+#    #+#             */
-/*   Updated: 2021/11/24 17:03:26 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/08 21:00:50 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 
 static t_list	*my_lstnew(void *content)
 {
-	t_list	new;
+	t_list	*new;
 
 	new = (t_list *)malloc(sizeof(t_list));
 	if (!new)
 		return (0);
-	new -> content = content;
-	new -> next = NULL;
+	new->content = content;
+	new->next = NULL;
 	return (new);
 }
 
 static void	my_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	last;
+	t_list	*last;
 
 	if (!lst || !new)
 		return ;
@@ -37,9 +37,9 @@ static void	my_lstadd_back(t_list **lst, t_list *new)
 		return ;
 	}
 	last = *lst;
-	while (last -> next)
-		last = last -> next;
-	last -> next = new;
+	while (last->next)
+		last = last->next;
+	last->next = new;
 }
 
 static void	my_lstclear(t_list **lst, void (*del)(void *))
@@ -66,9 +66,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (!lst || !f || !del)
 		return (0);
+	result = NULL;
 	while (lst)
 	{
-		temp = my_lstnew(*(f)(lst->content));
+		temp = my_lstnew((*f)(lst->content));
 		if (!temp)
 		{
 			my_lstclear(&result, del);

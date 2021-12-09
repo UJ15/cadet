@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 11:07:47 by jayu              #+#    #+#             */
-/*   Updated: 2021/11/22 10:10:29 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/09 15:18:22 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 	to = dst;
 	from = src;
+	if (!dst && !src)
+		return (0);
 	while (n-- > 0)
-	{
 		*to++ = *from++;
-	}
 	return (dst);
 }

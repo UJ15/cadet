@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:12:33 by jayu              #+#    #+#             */
-/*   Updated: 2021/12/02 21:29:05 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/09 17:00:42 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,26 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*start;
+	int		i;
 
+	i = 0;
 	start = (char *)s;
-	while (*s)
-		s++;
-	if (!c)
-		return ((char *)s);
-	while (s != start)
+	while (*start)
 	{
-		if (*s == c)
-			return ((char *)s);
-		s--;
+		start++;
+		i++;
 	}
-	if (*s == c)
-		return ((char *)s);
+	if (c == 0)
+		return (start);
+	while (i >= 0)
+	{
+		if (*start == c)
+			return (start);
+		else
+		{
+			i--;
+			start--;
+		}
+	}
 	return (0);
 }

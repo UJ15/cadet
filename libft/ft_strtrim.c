@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:20:09 by jayu              #+#    #+#             */
-/*   Updated: 2021/12/08 20:33:48 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/09 16:52:31 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (start >= end)
 		return (ft_strdup(""));
 	cp = (char *)malloc(sizeof(char) * (end - start) + 1);
+	if (!cp)
+		return (0);
 	my_strlcpy(cp, &s1[start], end - start + 1);
 	return (cp);
 }

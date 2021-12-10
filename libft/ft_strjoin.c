@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:57:09 by jayu              #+#    #+#             */
-/*   Updated: 2021/11/23 20:51:28 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/10 22:18:36 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*cp;
 
-	if (!s1 || !s2)
-		return (0);
 	cp = (char *)malloc(sizeof(char) * (my_strlen(s1) + my_strlen(s2)) + 1);
 	if (!cp)
 		return (0);

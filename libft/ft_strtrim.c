@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:20:09 by jayu              #+#    #+#             */
-/*   Updated: 2021/12/09 16:52:31 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/10 22:19:01 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		end;
 
 	start = 0;
-	if (!s1)
-		return (0);
 	if (!set)
 		return (ft_strdup((char *)s1));
 	end = my_strlen(s1);

@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:19:18 by jayu              #+#    #+#             */
-/*   Updated: 2021/11/24 13:20:56 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/10 22:29:33 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 static void	my_putchar_fd(char c, int fd)
 {
-	if (fd < 0)
-		return ;
 	write(fd, &c, 1);
 }
 
@@ -32,8 +30,6 @@ static void	my_putstr_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
-	if (fd < 0 || !s)
-		return ;
 	while (s[i] != '\0')
 	{
 		if (my_isascii(s[i]))
@@ -45,8 +41,6 @@ static void	my_putstr_fd(char *s, int fd)
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	if (fd < 0)
-		return ;
 	my_putstr_fd(s, fd);
 	my_putchar_fd('\n', fd);
 }

@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:53:54 by jayu              #+#    #+#             */
-/*   Updated: 2021/12/08 22:01:35 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/10 22:19:52 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ static int	my_word_cnt(char const *s, char c)
 {
 	int	cnt;
 
-	if (!s)
-		return (-1);
 	cnt = 0;
 	while (*s)
 	{

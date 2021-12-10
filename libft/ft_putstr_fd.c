@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:15:23 by jayu              #+#    #+#             */
-/*   Updated: 2021/11/24 13:26:54 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/10 22:23:14 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	ft_putstr_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
-	if (fd < 0 || !s)
-		return ;
 	while (s[i] != '\0')
 	{
 		if (my_isascii(s[i]))

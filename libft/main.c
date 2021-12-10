@@ -15,17 +15,12 @@ void	del(void *c)
 }
 int main(void)
 {
-	t_list *l = ft_lstnew("a");
-	printf("%s\n", (char *)l->content);
-	for (int i = 1; i < 4; ++i)
-		ft_lstadd_back(&l, ft_lstnew("b"));
-	printf("%s\n", (char *)l->next->content);
-	t_list *m = ft_lstmap(l, f, del);
-	printf("%s\n", (char *)m->content);
-
-	for(int i = 0; i < 4; i++)
+	char **c = ft_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ", ' ');
+	int i = 0;
+	while (c[i] != NULL)
 	{
-		printf("%s\n",(char *)m->content);
-		m = m->next;
+		printf("%s\n", c[i]);
+		i++;
 	}
+	
 }

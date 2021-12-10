@@ -6,11 +6,11 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 19:37:22 by jayu              #+#    #+#             */
-/*   Updated: 2021/12/08 22:14:13 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/11 00:18:13 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <limits.h>
 
 static int	my_is_space(char c)
 {
@@ -21,8 +21,8 @@ static int	my_is_space(char c)
 
 int	ft_atoi(const char *str)
 {
-	int			sign;
-	long long	result;
+	long long			sign;
+	unsigned long long	result;
 
 	sign = 1;
 	result = 0;
@@ -36,10 +36,10 @@ int	ft_atoi(const char *str)
 	}
 	while (*str >= 48 && *str <= 57)
 	{
-		if (result * sign > 2147483647)
-			return (-1);
-		else if (result * sign < -2147483648)
+		if (result > LLONG_MAX - 1 && sign == -1)
 			return (0);
+		else if (result > LLONG_MAX && sign == 1)
+			return (-1);
 		else
 			result = result * 10 + (*str - 48);
 		str++;

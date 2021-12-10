@@ -15,12 +15,20 @@ void	del(void *c)
 }
 int main(void)
 {
-	char **c = ft_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ", ' ');
-	int i = 0;
-	while (c[i] != NULL)
+	t_list *head = ft_lstnew("a");
+	t_list *n1 = ft_lstnew("b");
+	head->next = n1;
+	t_list *n2 = ft_lstnew("c");
+	n1->next = n2;
+	t_list *cp = ft_lstmap(head, f, del);
+	while(head)
 	{
-		printf("%s\n", c[i]);
-		i++;
+		printf("%s\n", head->content);
+		head=head->next;
 	}
-	
+	while(cp)
+	{
+		printf("%s\n", cp->content);
+		cp=cp->next;
+	}
 }

@@ -47,10 +47,10 @@ BSRCS = ft_lstnew.c \
 OBJS = $(SRCS:.c=.o)
 BOBJS = $(BSRCS:.c=.o)
 
-all: $(NAME)
-
 $(NAME): $(OBJS)
 	ar cr $@ $^
+
+all: $(NAME)
 
 bonus : $(BOBJS) $(OBJS)
 	ar cr $(NAME) $^

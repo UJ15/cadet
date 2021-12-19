@@ -5,27 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 10:45:06 by jayu              #+#    #+#             */
-/*   Updated: 2021/12/17 21:21:07 by jayu             ###   ########.fr       */
+/*   Created: 2021/12/19 14:23:43 by jayu              #+#    #+#             */
+/*   Updated: 2021/12/19 14:24:43 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-int	buf_size(char *s)
+int	ft_strlen(char *s)
 {
-	int ret;
+	int	i;
 
-	if (!s || *s == '\n')
+	if (!s)
 		return (0);
-	ret = 0;
-	while (*s && *s != '\n')
+	i = 0;
+	while (*s)
 	{
-		ret++;
+		i++;
 		s++;
 	}
-	return (ret);
+	return (i);
 }
 
 int	read_buf(t_buf *buf, char **line)
@@ -35,21 +35,19 @@ int	read_buf(t_buf *buf, char **line)
 	int	find;
 
 	i = ft_strlen(*line);
-	printf("line_len = %d\n", i);
-	if(!(resize(i, buf, line)))
+	if (!resize(i, buf, line))
 		return (-1);
 	j = 0;
 	find = 0;
 	while (buf->buf[j])
 	{
 		(*line)[i++] = buf->buf[j];
-		if (buf->buf[j++] == '\n')
+		if (buf-> buf[j++] == '\n')
 		{
 			i--;
 			find = 1;
-			break;
+			break ;
 		}
-		printf("line = %s\n", *line);
 	}
 	(*line)[i] = 0;
 	i = 0;
@@ -58,7 +56,6 @@ int	read_buf(t_buf *buf, char **line)
 	buf->buf[i] = 0;
 	return (find);
 }
-
 
 int	get_next_line(int fd, char **line)
 {
@@ -70,17 +67,15 @@ int	get_next_line(int fd, char **line)
 	if (!head)
 		head = new_buf(fd);
 	buf = find_buf(fd, head);
-	if (BUFFER_SIZE < 0 || fd < 0)
+	if (BUFFER_SIZE < 0 || fd < 0 || !buf)
 		return (-1);
 	*line = 0;
-	printf("head2 = %s\n", head->buf);
 	find = read_buf(buf, line);
 	if (find > 0)
 		return (find);
 	size = read(fd, buf->buf, BUFFER_SIZE);
 	while (size > 0)
 	{
-		printf("head1 = %s\n", head->buf);
 		buf->buf[size] = 0;
 		find = read_buf(buf, line);
 		if (find > 0)
@@ -90,4 +85,3 @@ int	get_next_line(int fd, char **line)
 	clear_buf(fd, &head);
 	return (size);
 }
- 

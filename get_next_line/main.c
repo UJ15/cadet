@@ -1,15 +1,15 @@
-//#include "get_next_line.h"
-#include "gnlh.h"
+#include "get_next_line.h"
 #include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <string.h>
 
 int	main(void)
 {
 	int		fd;
 	int		i;
 	int		j;
-	char	*line = 0;
+	char *line;
 
 	fd = open("./text.txt", O_RDONLY);
 
@@ -19,22 +19,10 @@ int	main(void)
 		printf("\nERROR in open\n");
 		return (0);
 	}
-	while ((i = get_next_line(fd, &line)) > 0)
-	{
-		printf("|%s\n", line);
-		free(line);
-		j++;
-	}
-	printf("|%s\n", line);
+	line = get_next_line(fd);
+	if (!strcmp(line, "\n"))
+		printf("ok");
+	printf("%s", line);
 	free(line);
 	close(fd);
-
-	printf("%d\n", j);
-
-	if (i == -1)
-		printf("\nError Function\n");
-	else if (j == 2)
-		printf("\ngood!\n");
-	else if (j != 2)
-		printf("\nfuck!\n");
 }

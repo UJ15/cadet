@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:47:04 by jayu              #+#    #+#             */
-/*   Updated: 2021/12/19 14:18:52 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/20 13:48:14 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
+#  define BUFFER_SIZE 100000000
 # endif
 
 typedef struct s_buf
@@ -34,6 +34,6 @@ int		resize(int len, t_buf *buf, char **line);
 void	clear_buf(int fd, t_buf **head);
 int		ft_strlen(char *s);
 int		read_buf(t_buf *buf, char **line);
-int		get_next_line(int fd, char **line);
+char	*get_next_line(int fd);
 
-#endif 
+#endif

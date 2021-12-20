@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 14:23:43 by jayu              #+#    #+#             */
-/*   Updated: 2021/12/19 14:24:43 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/20 14:13:21 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,8 @@ int	ft_strlen(char *s)
 	if (!s)
 		return (0);
 	i = 0;
-	while (*s)
-	{
+	while (s[i] != '\0')
 		i++;
-		s++;
-	}
 	return (i);
 }
 
@@ -42,46 +39,47 @@ int	read_buf(t_buf *buf, char **line)
 	while (buf->buf[j])
 	{
 		(*line)[i++] = buf->buf[j];
-		if (buf-> buf[j++] == '\n')
+		if (buf->buf[j++] == '\n')
 		{
-			i--;
 			find = 1;
 			break ;
 		}
 	}
-	(*line)[i] = 0;
+	(*line)[i] = '\0';
 	i = 0;
 	while (buf->buf[j])
 		buf->buf[i++] = buf->buf[j++];
 	buf->buf[i] = 0;
+	int k; 
+	k = ft_strlen(*line);
 	return (find);
 }
 
-int	get_next_line(int fd, char **line)
+char	*get_next_line(int fd)
 {
 	static t_buf	*head;
 	t_buf			*buf;
-	int				find;
 	int				size;
+	char			*line;
 
 	if (!head)
 		head = new_buf(fd);
 	buf = find_buf(fd, head);
 	if (BUFFER_SIZE < 0 || fd < 0 || !buf)
-		return (-1);
-	*line = 0;
-	find = read_buf(buf, line);
-	if (find > 0)
-		return (find);
+		return (0);
+	line = 0;
+	if (read_buf(buf, &line) > 0)
+		return (line);
 	size = read(fd, buf->buf, BUFFER_SIZE);
 	while (size > 0)
 	{
 		buf->buf[size] = 0;
-		find = read_buf(buf, line);
-		if (find > 0)
-			return (find);
+		if (read_buf(buf, &line) > 0)
+			return (line);
 		size = read(fd, buf->buf, BUFFER_SIZE);
 	}
+	if (line[0] != 0)
+		return (line);
 	clear_buf(fd, &head);
-	return (size);
+	return (0);
 }

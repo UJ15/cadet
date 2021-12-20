@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:46:35 by jayu              #+#    #+#             */
-/*   Updated: 2021/12/19 14:25:09 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/20 13:45:14 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	buf_size(char *s)
 	if (!s || *s == '\n')
 		return (0);
 	i = 0;
-	while (*s && *s != '\n')
+	if (*s && *s != '\n')
 	{
 		i++;
 		s++;
@@ -33,8 +33,6 @@ t_buf	*new_buf(int fd)
 	t_buf	*new;
 
 	new = malloc(sizeof(t_buf));
-	if (!new)
-		return (0);
 	new->fd = fd;
 	new->buf[0] = 0;
 	new->next = 0;
@@ -47,7 +45,7 @@ t_buf	*find_buf(int fd, t_buf *buf)
 		return (buf);
 	if (!buf->next)
 	{
-		buf->next = new_buf(fd);
+		buf->next = buf;
 		return (buf->next);
 	}
 	return (find_buf(fd, buf->next));
@@ -55,12 +53,12 @@ t_buf	*find_buf(int fd, t_buf *buf)
 
 int	resize(int len, t_buf *buf, char **line)
 {
-	char	*new_line;
 	int		i;
 	int		j;
+	char	*new_line;
 
 	j = buf_size(buf->buf);
-	new_line = malloc(len + j + 1);
+	new_line = (char *)malloc(sizeof(char) * (len + j + 1));
 	if (!new_line)
 		return (0);
 	i = 0;
@@ -69,7 +67,7 @@ int	resize(int len, t_buf *buf, char **line)
 		new_line[i] = (*line)[i];
 		i++;
 	}
-	new_line[i] = 0;
+	new_line[i] = '\0';
 	free(*line);
 	*line = new_line;
 	return (1);
@@ -90,7 +88,7 @@ void	clear_buf(int fd, t_buf **head)
 	}
 	while (pre->next->fd != fd)
 		pre = pre->next;
-	cur = find_buf(fd, (*head));
+	cur = find_buf(fd, *head);
 	pre->next = cur->next;
 	free(cur);
 }

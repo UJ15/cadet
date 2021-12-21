@@ -19,10 +19,11 @@ int	main(void)
 		printf("\nERROR in open\n");
 		return (0);
 	}
-	line = get_next_line(fd);
-	if (!strcmp(line, "\n"))
-		printf("ok");
-	printf("%s", line);
+	while((line = get_next_line(fd)) != 0)
+	{
+		printf("%s",  line);
+	}
+//	printf("%s", line);
 	free(line);
 	close(fd);
 }

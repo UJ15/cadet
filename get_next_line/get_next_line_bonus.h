@@ -6,12 +6,12 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:47:04 by jayu              #+#    #+#             */
-/*   Updated: 2021/12/21 13:10:57 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/21 21:39:43 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>

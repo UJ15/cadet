@@ -6,12 +6,11 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 14:23:43 by jayu              #+#    #+#             */
-/*   Updated: 2021/12/21 13:09:39 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/21 21:42:11 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 #include <limits.h>
 
 int	ft_strlen(char *s)

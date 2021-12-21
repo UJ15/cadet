@@ -6,12 +6,11 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:46:35 by jayu              #+#    #+#             */
-/*   Updated: 2021/12/21 13:09:41 by jayu             ###   ########.fr       */
+/*   Updated: 2021/12/21 21:42:29 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 int	buf_size(char *s)
 {

@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 14:23:43 by jayu              #+#    #+#             */
-/*   Updated: 2022/01/04 22:17:40 by jayu             ###   ########.fr       */
+/*   Updated: 2022/01/05 02:58:05 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-int	read_buf(t_buf *buf, char **line)
+int	ft_read_buf(t_buf *buf, char **line)
 {
 	int	i;
 	int	j;
 	int	find;
 
 	i = ft_strlen(*line);
-	if (!resize(i, buf, line))
+	if (!ft_resize(i, buf, line))
 		return (-1);
 	j = 0;
 	find = 0;
@@ -66,21 +66,21 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE < 0 || fd > OPEN_MAX)
 		return (0);
 	if (!head)
-		head = new_buf(fd);
-	buf = find_buf(fd, head);
+		head = ft_new_buf(fd);
+	buf = ft_find_buf(fd, head);
 	line = 0;
-	if (read_buf(buf, &line) > 0)
+	if (ft_read_buf(buf, &line) > 0)
 		return (line);
 	size = read(fd, buf->buf, BUFFER_SIZE);
 	while (size > 0)
 	{
 		buf->buf[size] = 0;
-		if (read_buf(buf, &line) > 0)
+		if (ft_read_buf(buf, &line) > 0)
 			return (line);
 		size = read(fd, buf->buf, BUFFER_SIZE);
 	}
 	if (line[0] != '\0')
 		return (line);
-	clear_buf(fd, &head, &line);
+	ft_clear_buf(fd, &head, &line);
 	return (0);
 }

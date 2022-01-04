@@ -6,13 +6,13 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:46:35 by jayu              #+#    #+#             */
-/*   Updated: 2021/12/21 21:41:57 by jayu             ###   ########.fr       */
+/*   Updated: 2022/01/05 02:31:37 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	buf_size(char *s)
+int	ft_buf_size(char *s)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ int	buf_size(char *s)
 	return (i);
 }
 
-t_buf	*new_buf(int fd)
+t_buf	*ft_new_buf(int fd)
 {
 	t_buf	*new;
 
@@ -40,25 +40,25 @@ t_buf	*new_buf(int fd)
 	return (new);
 }
 
-t_buf	*find_buf(int fd, t_buf *buf)
+t_buf	*ft_find_buf(int fd, t_buf *buf)
 {
 	if (buf->fd == fd)
 		return (buf);
 	if (!buf->next)
 	{
-		buf->next = new_buf(fd);
+		buf->next = ft_new_buf(fd);
 		return (buf->next);
 	}
-	return (find_buf(fd, buf->next));
+	return (ft_find_buf(fd, buf->next));
 }
 
-int	resize(int len, t_buf *buf, char **line)
+int	ft_resize(int len, t_buf *buf, char **line)
 {
 	int		i;
 	int		j;
 	char	*new_line;
 
-	j = buf_size(buf->buf);
+	j = ft_buf_size(buf->buf);
 	new_line = (char *)malloc(sizeof(char) * (len + j + 1));
 	if (!new_line)
 		return (0);
@@ -74,7 +74,7 @@ int	resize(int len, t_buf *buf, char **line)
 	return (1);
 }
 
-void	clear_buf(int fd, t_buf **head, char **line)
+void	ft_clear_buf(int fd, t_buf **head, char **line)
 {
 	t_buf	*pre;
 	t_buf	*cur;
@@ -92,7 +92,7 @@ void	clear_buf(int fd, t_buf **head, char **line)
 	}
 	while (pre->next->fd != fd)
 		pre = pre->next;
-	cur = find_buf(fd, *head);
+	cur = ft_find_buf(fd, *head);
 	pre->next = cur->next;
 	free(cur);
 }

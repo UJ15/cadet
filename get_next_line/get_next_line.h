@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:47:04 by jayu              #+#    #+#             */
-/*   Updated: 2021/12/21 21:42:39 by jayu             ###   ########.fr       */
+/*   Updated: 2022/01/05 02:22:51 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ typedef struct s_buf
 	struct s_buf	*next;
 }			t_buf;
 
-int		buf_size(char *s);
-t_buf	*new_buf(int fd);
-t_buf	*find_buf(int fd, t_buf *buf);
-int		resize(int len, t_buf *buf, char **line);
-void	clear_buf(int fd, t_buf **head, char **line);
+int		ft_buf_size(char *s);
+t_buf	*ft_new_buf(int fd);
+t_buf	*ft_find_buf(int fd, t_buf *buf);
+int		ft_resize(int len, t_buf *buf, char **line);
+void	ft_clear_buf(int fd, t_buf **head, char **line);
 int		ft_strlen(char *s);
-int		read_buf(t_buf *buf, char **line);
+int		ft_read_buf(t_buf *buf, char **line);
 char	*get_next_line(int fd);
 
 #endif

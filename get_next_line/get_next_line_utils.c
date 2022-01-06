@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:46:35 by jayu              #+#    #+#             */
-/*   Updated: 2022/01/05 02:31:37 by jayu             ###   ########.fr       */
+/*   Updated: 2022/01/06 15:23:38 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	ft_resize(int len, t_buf *buf, char **line)
 	char	*new_line;
 
 	j = ft_buf_size(buf->buf);
-	new_line = (char *)malloc(sizeof(char) * (len + j + 1));
+	new_line = (char *)malloc(sizeof(char) * (len + j + 2));
 	if (!new_line)
 		return (0);
 	i = 0;

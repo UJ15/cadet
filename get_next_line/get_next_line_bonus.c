@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 22:19:04 by jayu              #+#    #+#             */
-/*   Updated: 2022/01/06 15:24:56 by jayu             ###   ########.fr       */
+/*   Updated: 2022/01/06 15:54:06 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*get_next_line(int fd)
 	int				size;
 	char			*line;
 
-	if (fd < 0 || BUFFER_SIZE < 0 || OPEN_MAX)
+	if (fd < 0 || BUFFER_SIZE < 0 || fd > OPEN_MAX)
 		return (0);
 	if (!head)
 		head = ft_new_buf(fd);

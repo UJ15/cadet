@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:47:04 by jayu              #+#    #+#             */
-/*   Updated: 2022/01/05 02:22:51 by jayu             ###   ########.fr       */
+/*   Updated: 2022/01/07 18:51:01 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 typedef struct s_buf
 {
 	int				fd;
-	char			buf[BUFFER_SIZE + 1];
+	char			*buf;
 	struct s_buf	*next;
 }			t_buf;
 
@@ -35,5 +35,6 @@ void	ft_clear_buf(int fd, t_buf **head, char **line);
 int		ft_strlen(char *s);
 int		ft_read_buf(t_buf *buf, char **line);
 char	*get_next_line(int fd);
+int		get_line(int fd, t_buf *buf, char **line);
 
 #endif

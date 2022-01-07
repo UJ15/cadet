@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:46:35 by jayu              #+#    #+#             */
-/*   Updated: 2022/01/06 15:23:38 by jayu             ###   ########.fr       */
+/*   Updated: 2022/01/07 19:06:05 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_buf	*ft_new_buf(int fd)
 	if (!new)
 		return (0);
 	new->fd = fd;
-	new->buf[0] = 0;
+	new->buf = 0;
 	new->next = 0;
 	return (new);
 }

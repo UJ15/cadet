@@ -6,12 +6,11 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 22:19:04 by jayu              #+#    #+#             */
-/*   Updated: 2022/01/06 15:54:06 by jayu             ###   ########.fr       */
+/*   Updated: 2022/01/07 19:11:22 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-#include <limits.h>
 
 int	ft_strlen(char *s)
 {
@@ -60,27 +59,41 @@ char	*get_next_line(int fd)
 {
 	static t_buf	*head;
 	t_buf			*buf;
-	int				size;
 	char			*line;
 
-	if (fd < 0 || BUFFER_SIZE < 0 || fd > OPEN_MAX)
+	if (fd < 0 || BUFFER_SIZE < 0)
 		return (0);
 	if (!head)
 		head = ft_new_buf(fd);
 	buf = ft_find_buf(fd, head);
 	line = 0;
-	if (ft_read_buf(buf, &line) > 0)
+	if(buf->buf == 0)
+	{
+		buf->buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
+		buf->buf[0] = 0;
+	}
+	if (get_line(fd, buf, &line) > 0)
 		return (line);
+	if (line[0] != '\0' && line != 0)
+		return (line);
+	free(buf->buf);
+	ft_clear_buf(fd, &head, &line);
+	return (0);
+}
+
+int	get_line(int fd, t_buf *buf, char **line)
+{
+	int	size;
+
+	if (ft_read_buf(buf, line) > 0)
+		return (1);
 	size = read(fd, buf->buf, BUFFER_SIZE);
 	while (size > 0)
 	{
 		buf->buf[size] = 0;
-		if (ft_read_buf(buf, &line) > 0)
-			return (line);
+		if (ft_read_buf(buf, line) > 0)
+			return (1);
 		size = read(fd, buf->buf, BUFFER_SIZE);
 	}
-	if (line[0] != '\0')
-		return (line);
-	ft_clear_buf(fd, &head, &line);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 14:23:43 by jayu              #+#    #+#             */
-/*   Updated: 2022/01/07 19:06:06 by jayu             ###   ########.fr       */
+/*   Updated: 2022/01/07 19:17:16 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*get_next_line(int fd)
 		head = ft_new_buf(fd);
 	buf = ft_find_buf(fd, head);
 	line = 0;
-	if(buf->buf == 0)
+	if (buf->buf == 0)
 	{
 		buf->buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
 		buf->buf[0] = 0;
@@ -97,4 +97,3 @@ int	get_line(int fd, t_buf *buf, char **line)
 	}
 	return (0);
 }
-

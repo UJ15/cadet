@@ -6,62 +6,32 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:57:09 by jayu              #+#    #+#             */
-/*   Updated: 2021/12/10 22:18:36 by jayu             ###   ########.fr       */
+/*   Updated: 2022/01/19 15:20:15 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static size_t	my_strlen(const char *s)
-{	
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-
-static void	*my_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strjoin(char *s1, char *s2, int flag)
 {
-	char		*to;
-	const char	*from;
+	char	*str;
+	int		s1_size;
+	int		s2_size;
 
-	to = dst;
-	from = src;
-	while (n-- > 0)
-	{
-		*to++ = *from++;
-	}
-	return (dst);
-}
-
-static size_t	my_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	size_t	srclen;
-
-	srclen = my_strlen(src);
-	if (srclen + 1 < dstsize)
-		my_memcpy(dst, src, srclen + 1);
-	else if (dstsize != 0)
-	{
-		my_memcpy(dst, src, dstsize - 1);
-		dst[dstsize - 1] = '\0';
-	}
-	return (srclen);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*cp;
-
-	cp = (char *)malloc(sizeof(char) * (my_strlen(s1) + my_strlen(s2)) + 1);
-	if (!cp)
+	if (!s1 || !s2)
 		return (0);
-	my_strlcpy(cp, s1, my_strlen(s1) + 1);
-	my_strlcpy(cp + my_strlen(s1), s2, my_strlen(s2) + 1);
-	return (cp);
+	s1_size = ft_strlen(s1);
+	s2_size = ft_strlen(s2);
+	str = malloc(sizeof(char) * (s1_size + s2_size + 1));
+	if (!str)
+		return (0);
+	ft_memcpy(str, s1, s1_size);
+	ft_memcpy(str + s1_size, s2, s2_size);
+	str[s1_size + s2_size] = '\0';
+	if (flag == 1 || flag == 3)
+		free(s1);
+	if (flag == 2 || flag == 3)
+		free(s2);
+	return (str);
 }

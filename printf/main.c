@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdarg.h>
-
-int sum(int ap, ...)
-{
-	va_list 
-}
+#include "ft_printf.h"
 
 int	main(void)
 {
-	
+	int	i;
+	char *t = "qwe";
+
+	i = -2232;
+	ft_printf("---my printf---\ns : %s\nd : %d\nx : %x\np : %p\n\n", t, i, i, &i);
+	printf("---lib printf---\ns : %s\nd : %d\nx : %x\np : %p\n", t, i, i, &i);
 }

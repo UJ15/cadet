@@ -1,40 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 13:14:52 by jayu              #+#    #+#             */
-/*   Updated: 2022/01/19 10:46:55 by jayu             ###   ########.fr       */
+/*   Created: 2022/01/19 13:12:43 by jayu              #+#    #+#             */
+/*   Updated: 2022/01/19 15:00:05 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "ft_printf.h"
 
-static void	*my_memset(void *b, int c, size_t len)
+int	print_char(int c, t_property *prop)
 {
-	size_t			i;
-	unsigned char	*temp;
+	int	result;
 
-	temp = (unsigned char *) b;
-	i = 0;
-	while (i < len)
-	{
-		*temp++ = c;
-		i++;
-	}
-	return (b);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*arr;
-
-	arr = malloc(size * count);
-	if (!arr)
-		return (0);
-	my_memset(arr, 0, size * count);
-	return (arr);
+	result = 0;
+	result = ft_putchar(c);
+	return (result);
 }

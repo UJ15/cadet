@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 15:26:33 by jayu              #+#    #+#             */
-/*   Updated: 2022/01/19 15:56:30 by jayu             ###   ########.fr       */
+/*   Updated: 2022/01/20 12:26:40 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ int	print_format_type(va_list argp, t_property *prop)
 
 	result = 0;
 	if (prop->type == 'c')
-		result = print_char(va_arg(argp, int), prop);
+		result = print_char(va_arg(argp, int));
 	else if (prop->type == '%')
-		result = print_char(prop->type, prop);
+		result = print_char(prop->type);
 	else if (prop->type == 's')
-		result = print_str(va_arg(argp, char *), prop);
+		result = print_str(va_arg(argp, char *));
 	else if (prop->type == 'p')
 		result = print_nbr(va_arg(argp, unsigned long long), prop,
 				"0123456789abcdef");

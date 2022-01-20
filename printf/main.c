@@ -2,12 +2,16 @@
 #include <stdarg.h>
 #include "ft_printf.h"
 
+int test(unsigned long long num)
+{
+	return num + 1;
+}
+
 int	main(void)
 {
 	int	i;
-	char *t = "qwe";
-
-	i = -2232;
-	ft_printf("---my printf---\ns : %s\nd : %d\nx : %x\np : %p\n\n", t, i, i, &i);
-	printf("---lib printf---\ns : %s\nd : %d\nx : %x\np : %p\n", t, i, i, &i);
+	
+	i = 0;
+	ft_printf("%s\n", NULL);
+	printf("%s\n" , NULL);
 }

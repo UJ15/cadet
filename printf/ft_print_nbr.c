@@ -6,7 +6,7 @@
 /*   By: jayu <jayu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:46:48 by jayu              #+#    #+#             */
-/*   Updated: 2022/01/19 15:57:37 by jayu             ###   ########.fr       */
+/*   Updated: 2022/01/20 12:43:21 by jayu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_nbrlen(unsigned long long nbr, t_property *prop)
 	int	result;
 
 	result = 0;
+	if (nbr == 0)
+		return (1);
 	while (nbr)
 	{
 		result++;
